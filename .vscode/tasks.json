@@ -1,0 +1,30 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc build",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "-g",
+                "-lGL",
+                "-lglfw",
+                "-lGLEW",
+                "${workspaceFolder}/*.c",
+                "-o",
+                "${workspaceFolder}/fractals"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Generated task by Debugger"
+        }
+    ],
+    "version": "2.0.0"
+}
