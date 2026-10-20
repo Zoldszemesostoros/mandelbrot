@@ -28,7 +28,7 @@ char *read_file(const char *filename)
 
 GLuint load_shader(const char *filename, GLenum shader_type)
 {
-    GLchar *file_content = read_file(filename);
+    const GLchar *const file_content = read_file(filename);
 
     // Compiling the shader
     GLuint shader = glCreateShader(shader_type);
