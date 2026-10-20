@@ -4,7 +4,7 @@ LINKFLAGS = -lGL -lGLEW -lglfw
 BUILDDIR=build
 
 %.o: %.c $(HEADERS)
-	gcc -c $< -o $@
+	gcc -c -g3 $< -o $@
 
 build: $(OBJECTS)
 	gcc $(OBJECTS) $(LINKFLAGS) -o mandelbrot

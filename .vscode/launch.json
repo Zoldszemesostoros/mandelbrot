@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/mandelbrot",
-            "args": [],
+            "args": ["(0x1.1eb83c9c22dacp-2,-0x1.860d49b3116fap-8) zoom: 0x1.6bd3b539f5b01p+7 max iterations: 230"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
