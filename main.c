@@ -5,13 +5,13 @@
 #include <GLFW/glfw3.h>
 #include "shader_utils.h"
 #include "controls.h"
-const float DEFAULT_PLOT_WIDTH = 3.0f;
-const float DEFAULT_PLOT_HEIGHT = 2.0f;
-const float ZOOM_SPEED = 1.02f;
-const float STRIDE_SPEED = 0.02f;
-float zoom_level = 1.0f;
-float plot_middle_x = -0.5f;
-float plot_middle_y = 0.0f;
+const double DEFAULT_PLOT_WIDTH = 3.0;
+const double DEFAULT_PLOT_HEIGHT = 2.0;
+const double ZOOM_SPEED = 1.04;
+const double STRIDE_SPEED = 0.03;
+double zoom_level = 1.0;
+double plot_middle_x = -0.5;
+double plot_middle_y = 0.0;
 unsigned int max_iterations = 200;
 
 void error_callback(int error, const char *description)
@@ -41,14 +41,14 @@ void set_uniforms(
 	GLuint window_width,
 	GLuint window_height)
 {
-	float plot_width = DEFAULT_PLOT_WIDTH / zoom_level,
-		  plot_height = plot_width * ((float)window_height / (float)window_width);
+	double plot_width = DEFAULT_PLOT_WIDTH / zoom_level;
+	double plot_height = plot_width * ((double)window_height / (double)window_width);
 
 	// Fill the uniforms with values
 	glUniform1i(max_iterations_uniform, max_iterations);
-	glUniform2f(plot_bottom_left_uniform, plot_middle_x - plot_width / 2, plot_middle_y - plot_height / 2);
-	glUniform2f(plot_sizes_uniform, plot_width, plot_height);
-	glUniform2f(screen_sizes_uniform, window_width, window_height);
+	glUniform2d(plot_bottom_left_uniform, plot_middle_x - plot_width / 2.0, plot_middle_y - plot_height / 2.0);
+	glUniform2d(plot_sizes_uniform, plot_width, plot_height);
+	glUniform2d(screen_sizes_uniform, window_width, window_height);
 }
 
 int main()
