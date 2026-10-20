@@ -1,4 +1,15 @@
+#include <stdio.h>
+
 #include "controls.h"
+
+
+extern const double ZOOM_SPEED;
+extern const double STRIDE_SPEED;
+extern double zoom_level;
+extern double plot_middle_x;
+extern double plot_middle_y;
+extern unsigned int max_iterations;
+extern const char* STATE_EXPORT_FORMAT;
 void scroll_callback(GLFWwindow *window, double xoffset, double yoffset)
 {
 	if (yoffset > 0)
@@ -48,6 +59,9 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
 		case GLFW_KEY_RIGHT:
 			plot_middle_x += STRIDE_SPEED / zoom_level;
 			break;
+		case GLFW_KEY_P:
+			printf(STATE_EXPORT_FORMAT, plot_middle_x, plot_middle_y, zoom_level, max_iterations);
+			printf("\n");
 		}
 	}
 }

@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include "shader_utils.h"
 #include "controls.h"
+const char *STATE_EXPORT_FORMAT = "(%la,%la) zoom: %la max iterations: %i";
 const double DEFAULT_PLOT_WIDTH = 3.0;
 const double DEFAULT_PLOT_HEIGHT = 2.0;
 const double ZOOM_SPEED = 1.04;
@@ -51,8 +52,16 @@ void set_uniforms(
 	glUniform2d(screen_sizes_uniform, window_width, window_height);
 }
 
-int main()
+int main(int argc, char **argv)
 {
+	if (argc > 1)
+	{
+		int validly_converted = sscanf(argv[1], STATE_EXPORT_FORMAT, &plot_middle_x, &plot_middle_y, &zoom_level, &max_iterations);
+		if (validly_converted != 4) {
+			printf("%i parameters could not be parsed", 4-validly_converted);
+		}
+	}
+
 	// Init GLFW
 	glfwInit();
 	glfwSetErrorCallback(error_callback);
